@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat > *)",
+      "Bash(python3)",
+      "Bash(python3 /tmp/write_all.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 /tmp/write_profile.py)",
+      "Bash(python3 /tmp/write_all_files.py)",
+      "Bash(python3 /tmp/write_files.py)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}

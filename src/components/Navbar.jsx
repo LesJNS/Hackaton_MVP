@@ -1,5 +1,5 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { LogOut, Briefcase, User, BookOpen, CheckSquare } from 'lucide-react'
+import { LogOut, User, BookOpen, Briefcase, Zap, FlaskConical } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import logo from '../../assets/Logo.svg'
 
@@ -19,10 +19,9 @@ export default function Navbar() {
     <nav className="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <Link to={currentUser ? (role === 'employer' ? '/employer' : '/dashboard') : '/'} className="flex items-center gap-2">
-          <img src={logo} alt="DameChamba" className="w-9 h-9 object-contain" />
+          <img src={logo} alt="Talently" className="w-9 h-9 object-contain" />
           <span className="flex flex-col leading-none font-black text-xl text-palette-text-primary">
-            <span>Dame</span>
-            <span className="ml-4 -mt-0.5">Chamba</span>
+            <span>Talently</span>
           </span>
         </Link>
 
@@ -32,23 +31,22 @@ export default function Navbar() {
               <>
                 <NavLink to="/dashboard" icon={<User size={16} />} label="Mi Perfil" active={isActive('/dashboard')} />
                 <NavLink to="/challenges" icon={<BookOpen size={16} />} label="Retos" active={isActive('/challenges')} />
-                <NavLink to="/validate" icon={<CheckSquare size={16} />} label="Validar" active={isActive('/validate')} />
+                <NavLink to="/mini-challenges" icon={<Zap size={16} />} label="Mini Retos" active={isActive('/mini-challenges')} />
+                <NavLink to="/skill-tests" icon={<FlaskConical size={16} />} label="Pruebas" active={isActive('/skill-tests')} />
               </>
             )}
             {role === 'employer' && (
-              <>
-                <NavLink to="/employer" icon={<Briefcase size={16} />} label="Buscar Talento" active={isActive('/employer')} />
-              </>
+              <NavLink to="/employer" icon={<Briefcase size={16} />} label="Buscar Talento" active={isActive('/employer')} />
             )}
 
             <div className="flex items-center gap-2 ml-3 pl-3 border-l border-slate-200">
-              <div className={`w-8 h-8 rounded-lg ${currentUser.avatarColor || 'bg-palette-button-primary'} flex items-center justify-center text-white font-bold text-xs`}>
-                {currentUser.initials || currentUser.name?.[0] || 'U'}
+              <div className={`w-8 h-8 rounded-lg ${currentUser.avatarColor || 'bg-palette-text-primary'} flex items-center justify-center text-white font-bold text-xs`}>
+                {currentUser.initials || (currentUser.name && currentUser.name[0]) || 'U'}
               </div>
               <button
                 onClick={handleLogout}
                 className="p-2 rounded-lg text-palette-text-small hover:text-palette-text-primary hover:bg-palette-fonto-light transition-colors"
-                title="Cerrar sesión"
+                title="Cerrar sesion"
               >
                 <LogOut size={16} />
               </button>

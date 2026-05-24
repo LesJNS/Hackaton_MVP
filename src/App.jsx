@@ -11,6 +11,9 @@ import ChallengesFeed from './pages/ChallengesFeed'
 import ChallengeDetail from './pages/ChallengeDetail'
 import PeerValidation from './pages/PeerValidation'
 import EmployerDashboard from './pages/EmployerDashboard'
+import SkillTests from './pages/SkillTests'
+import SkillTestDetail from './pages/SkillTestDetail'
+import MiniChallenges from './pages/MiniChallenges'
 
 function ProtectedRoute({ children, requiredRole }) {
   const { currentUser, role } = useApp()
@@ -68,6 +71,27 @@ function AppShell() {
           <ProtectedRoute requiredRole="candidate">
             <Navbar />
             <div className="flex-1"><PeerValidation /></div>
+            <Footer />
+          </ProtectedRoute>
+        } />
+        <Route path="/skill-tests" element={
+          <ProtectedRoute requiredRole="candidate">
+            <Navbar />
+            <div className="flex-1"><SkillTests /></div>
+            <Footer />
+          </ProtectedRoute>
+        } />
+        <Route path="/skill-tests/:id" element={
+          <ProtectedRoute requiredRole="candidate">
+            <Navbar />
+            <div className="flex-1"><SkillTestDetail /></div>
+            <Footer />
+          </ProtectedRoute>
+        } />
+        <Route path="/mini-challenges" element={
+          <ProtectedRoute requiredRole="candidate">
+            <Navbar />
+            <div className="flex-1"><MiniChallenges /></div>
             <Footer />
           </ProtectedRoute>
         } />
